@@ -70,13 +70,21 @@ struct LoginView: View {
                         .cornerRadius(10)
 
                         //Navigation Link
-                        NavigationLink(destination: RecentlyPlayedView(),
+                        NavigationLink(destination: OptionsView(),
                                        isActive: $isAuthenticated,
                                        label: {
                             EmptyView()
                         }
                         
                         )
+                        Text("Forgot Password?")
+                            .foregroundColor(.white)
+                            .padding()
+                        NavigationLink(destination: ForgotPasswordView()) {
+                            Text("Reset Password")
+                                .foregroundColor(.white)
+                        }
+
                         Text("Don't have an account?")
                             .foregroundColor(.white)
                             .padding()
@@ -84,7 +92,6 @@ struct LoginView: View {
                             Text("Sign up here!")
                                 .foregroundColor(.white)
                         }
-                        .padding()
                         
                     }
                 }

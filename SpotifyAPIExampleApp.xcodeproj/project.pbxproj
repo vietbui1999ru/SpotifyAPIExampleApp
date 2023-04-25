@@ -38,7 +38,7 @@
 		94963A5729EEF71C00EE0FC3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94963A5629EEF71C00EE0FC3 /* Card.swift */; };
 		94963A5929EEF75000EE0FC3 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94963A5829EEF75000EE0FC3 /* SwipeView.swift */; };
 		94963A5B29EEF9F400EE0FC3 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 94963A5A29EEF9F400EE0FC3 /* fonts */; };
-		94A34CFD29F19FE4002C5638 /* LoginSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */; };
+		949F33D029F8276E00A927E1 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949F33CF29F8276E00A927E1 /* OptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,7 @@
 		94963A5629EEF71C00EE0FC3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		94963A5829EEF75000EE0FC3 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		94963A5A29EEF9F400EE0FC3 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
-		94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwipe.swift; sourceTree = "<group>"; };
+		949F33CF29F8276E00A927E1 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				94963A5829EEF75000EE0FC3 /* SwipeView.swift */,
 				473F41602516FF62009E52C3 /* Album Views */,
 				47B9615B2516A6FE0069E441 /* Playlist Views */,
-				94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */,
+				949F33CF29F8276E00A927E1 /* OptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,11 +280,11 @@
 				4708130E2515EB6B00794934 /* ImageNames.swift in Sources */,
 				47B961592516A6F50069E441 /* PlaylistCellView.swift in Sources */,
 				473F415E2516FF5C009E52C3 /* AlbumTracksView.swift in Sources */,
+				949F33D029F8276E00A927E1 /* OptionsView.swift in Sources */,
 				47B9615E2516BA990069E441 /* SearchForTracksView.swift in Sources */,
 				475CB239259F34450092653A /* AlbumTrackCellView.swift in Sources */,
 				47D86875266A26D2006F971B /* DebugMenuView.swift in Sources */,
 				9473E24929F19A0E005E188C /* Constants.swift in Sources */,
-				94A34CFD29F19FE4002C5638 /* LoginSwipe.swift in Sources */,
 				9473E25129F19E25005E188C /* ForgotPasswordView.swift in Sources */,
 				47363AEB26112991007EEF6A /* RecentlyPlayedView.swift in Sources */,
 				470812EF2515E4D700794934 /* RootView.swift in Sources */,

@@ -103,7 +103,7 @@ struct SignupView: View {
                             .cornerRadius(10)
                         
                     })
-                    NavigationLink(destination: RecentlyPlayedView(), isActive: $showSignUpView) {
+                    NavigationLink(destination: OptionsView(), isActive: $showSignUpView) {
                         EmptyView()
                     }
                     

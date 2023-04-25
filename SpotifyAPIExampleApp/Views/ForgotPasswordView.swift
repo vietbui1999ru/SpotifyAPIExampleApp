@@ -54,6 +54,10 @@ struct ForgotPasswordView: View {
                         .padding()
                         .foregroundColor(.white)
                         .background(Color.green).cornerRadius(15)
+                        
+                        NavigationLink(destination: LoginView()) {
+                            Text("Go back to login").frame(maxWidth: .infinity).font(.title2)
+                        }
                     }
                     .padding()
                     Spacer()
