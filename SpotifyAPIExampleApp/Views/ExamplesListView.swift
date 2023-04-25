@@ -5,25 +5,25 @@ struct ExamplesListView: View {
     @State private var showLoginView = false
     var body: some View {
         
-        ZStack {
+        List {
             
-            SplashScreenView().onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.showLoginView = true
-                    //                    self.showAuth = true
-                    
-                }
-            }
-            
-            
-            if $showLoginView.wrappedValue {
-//                withAnimation {
-//                    LoginView()
-//                    //                    Auth()
+//            SplashScreenView().onAppear {
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    self.showLoginView = true
+//                    //                    self.showAuth = true
+//
 //                }
-                //                .transition(.scale)
-                //                .animation(.easeInOut(duration: 0.5))
-            }
+//            }
+//
+//
+//            if $showLoginView.wrappedValue {
+////                withAnimation {
+////                    LoginView()
+////                    //                    Auth()
+////                }
+//                //                .transition(.scale)
+//                //                .animation(.easeInOut(duration: 0.5))
+//            }
             
             NavigationLink("SwipeView",
                            destination: SwipeView()
@@ -58,7 +58,7 @@ struct ExamplesListView: View {
             // from the environment.
             
         }
-        .ignoresSafeArea(.all)
+        .listStyle(PlainListStyle())
         
     }
 }
