@@ -31,6 +31,14 @@
 		47C5818C255B1858007EE0CA /* SpotifyAPIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C5818B255B1858007EE0CA /* SpotifyAPIExtensions.swift */; };
 		47D760CA2541738100A08663 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D760C92541738100A08663 /* TrackView.swift */; };
 		47D86875266A26D2006F971B /* DebugMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86874266A26D2006F971B /* DebugMenuView.swift */; };
+		9473E24929F19A0E005E188C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473E24829F19A0E005E188C /* Constants.swift */; };
+		9473E24B29F19A2E005E188C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473E24A29F19A2E005E188C /* SplashScreenView.swift */; };
+		9473E24F29F19D92005E188C /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473E24E29F19D92005E188C /* SignupView.swift */; };
+		9473E25129F19E25005E188C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9473E25029F19E25005E188C /* ForgotPasswordView.swift */; };
+		94963A5729EEF71C00EE0FC3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94963A5629EEF71C00EE0FC3 /* Card.swift */; };
+		94963A5929EEF75000EE0FC3 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94963A5829EEF75000EE0FC3 /* SwipeView.swift */; };
+		94963A5B29EEF9F400EE0FC3 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 94963A5A29EEF9F400EE0FC3 /* fonts */; };
+		94A34CFD29F19FE4002C5638 /* LoginSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +66,14 @@
 		47C5818B255B1858007EE0CA /* SpotifyAPIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPIExtensions.swift; sourceTree = "<group>"; };
 		47D760C92541738100A08663 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		47D86874266A26D2006F971B /* DebugMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenuView.swift; sourceTree = "<group>"; };
+		9473E24829F19A0E005E188C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9473E24A29F19A2E005E188C /* SplashScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		9473E24E29F19D92005E188C /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		9473E25029F19E25005E188C /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		94963A5629EEF71C00EE0FC3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		94963A5829EEF75000EE0FC3 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		94963A5A29EEF9F400EE0FC3 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSwipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				470812EC2515E4D700794934 /* SpotifyAPIExampleAppApp.swift */,
+				9473E24829F19A0E005E188C /* Constants.swift */,
+				94963A5A29EEF9F400EE0FC3 /* fonts */,
 				470813112515EB8000794934 /* Model */,
 				470813082515E9F500794934 /* Views */,
 				4708130C2515EB6200794934 /* Project Utilities */,
@@ -115,15 +133,20 @@
 		470813082515E9F500794934 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9473E24A29F19A2E005E188C /* SplashScreenView.swift */,
 				470812EE2515E4D700794934 /* RootView.swift */,
 				4725249A253F8B9B00F3FD13 /* LoginView.swift */,
+				9473E24E29F19D92005E188C /* SignupView.swift */,
 				47B9614F25169BEF0069E441 /* ExamplesListView.swift */,
+				9473E25029F19E25005E188C /* ForgotPasswordView.swift */,
 				47B9615D2516BA990069E441 /* SearchForTracksView.swift */,
 				47D760C92541738100A08663 /* TrackView.swift */,
 				47363AEA26112991007EEF6A /* RecentlyPlayedView.swift */,
 				47D86874266A26D2006F971B /* DebugMenuView.swift */,
+				94963A5829EEF75000EE0FC3 /* SwipeView.swift */,
 				473F41602516FF62009E52C3 /* Album Views */,
 				47B9615B2516A6FE0069E441 /* Playlist Views */,
+				94A34CFC29F19FE4002C5638 /* LoginSwipe.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +167,7 @@
 			children = (
 				470813092515EA2800794934 /* Spotify.swift */,
 				47AAFC3F25A003E800DC1A02 /* PlaylistDeduplicator.swift */,
+				94963A5629EEF71C00EE0FC3 /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94963A5B29EEF9F400EE0FC3 /* fonts in Resources */,
 				470812F42515E4DA00794934 /* Preview Assets.xcassets in Resources */,
 				470812F12515E4DA00794934 /* Assets.xcassets in Resources */,
 			);
@@ -258,6 +283,9 @@
 				47B9615E2516BA990069E441 /* SearchForTracksView.swift in Sources */,
 				475CB239259F34450092653A /* AlbumTrackCellView.swift in Sources */,
 				47D86875266A26D2006F971B /* DebugMenuView.swift in Sources */,
+				9473E24929F19A0E005E188C /* Constants.swift in Sources */,
+				94A34CFD29F19FE4002C5638 /* LoginSwipe.swift in Sources */,
+				9473E25129F19E25005E188C /* ForgotPasswordView.swift in Sources */,
 				47363AEB26112991007EEF6A /* RecentlyPlayedView.swift in Sources */,
 				470812EF2515E4D700794934 /* RootView.swift in Sources */,
 				47AAFC4025A003E800DC1A02 /* PlaylistDeduplicator.swift in Sources */,
@@ -265,13 +293,17 @@
 				47C332A7251688D9009ED5CA /* MiscellaneousUtilities.swift in Sources */,
 				4708130A2515EA2800794934 /* Spotify.swift in Sources */,
 				47D760CA2541738100A08663 /* TrackView.swift in Sources */,
+				94963A5929EEF75000EE0FC3 /* SwipeView.swift in Sources */,
 				47B9615325169C030069E441 /* PlaylistsListView.swift in Sources */,
 				4725249B253F8B9B00F3FD13 /* LoginView.swift in Sources */,
 				47B961662516EDDE0069E441 /* SavedAlbumsGridView.swift in Sources */,
+				94963A5729EEF71C00EE0FC3 /* Card.swift in Sources */,
 				47B9616A2516F3DF0069E441 /* AlbumGridItemView.swift in Sources */,
 				47C5818C255B1858007EE0CA /* SpotifyAPIExtensions.swift in Sources */,
 				470812ED2515E4D700794934 /* SpotifyAPIExampleAppApp.swift in Sources */,
 				47B9615025169BEF0069E441 /* ExamplesListView.swift in Sources */,
+				9473E24F29F19D92005E188C /* SignupView.swift in Sources */,
+				9473E24B29F19A2E005E188C /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,19 +447,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SpotifyAPIExampleApp/Preview Content\"";
-				DEVELOPMENT_TEAM = NB77K8UB8Y;
+				DEVELOPMENT_TEAM = 3N9752VDWG;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpotifyAPIExampleApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Schorn.SpotifyAPIExampleApp";
+				PRODUCT_BUNDLE_IDENTIFIER = RhythmiqTeam.Rhythmiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -441,19 +473,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SpotifyAPIExampleApp/Preview Content\"";
-				DEVELOPMENT_TEAM = NB77K8UB8Y;
+				DEVELOPMENT_TEAM = 3N9752VDWG;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SpotifyAPIExampleApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Schorn.SpotifyAPIExampleApp";
+				PRODUCT_BUNDLE_IDENTIFIER = RhythmiqTeam.Rhythmiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

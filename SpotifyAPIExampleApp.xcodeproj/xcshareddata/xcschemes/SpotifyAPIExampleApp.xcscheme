@@ -54,12 +54,12 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "CLIENT_ID"
-            value = "your client id"
+            value = "b2183070278947fc95235a8400606f18"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "CLIENT_SECRET"
-            value = "your client secret"
+            value = "feba90146b4743e7a7da93a84f4360d4"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
