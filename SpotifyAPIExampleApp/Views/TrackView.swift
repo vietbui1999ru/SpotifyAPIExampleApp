@@ -15,7 +15,19 @@ struct TrackView: View {
     var body: some View {
         Button(action: playTrack) {
             HStack {
+                AsyncImage(url: URL(string: trackDisplayImage())) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                } placeholder: {
+                    Image(systemName: "music.note")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                }
                 Text(trackDisplayName())
+                
                 Spacer()
             }
             // Ensure the hit box extends across the entire width of the frame.
@@ -35,6 +47,12 @@ struct TrackView: View {
             displayName += " - \(artistName)"
         }
         return displayName
+    }
+    
+    /// The display Image for the track
+    func trackDisplayImage() -> String {
+        let displayImage = track.album?.images?.first?.url.absoluteString ?? ""
+        return displayImage
     }
     
     func playTrack() {

@@ -1,266 +1,125 @@
+//
+//  LoginView.swift
+//  Rhythmiq
+//
+//  Created by Abdelilah Chaib on 3/17/23.
+//  Modified by Viet Bui 3/24/23
+// Modularized code to make the view less clunky and easier to read
+// currently the view works fine, forgot to look at the logo imports from Abdel's original code, so it's missing the sign in options.
+// Added red border warning when logging in with non-existent email
+// added username and password authentication
+// Right now haven't looked at how Navigation LInks work, but the boilerplate code to navigate is there
+
 import SwiftUI
-import Combine
 
-/**
- A view that presents a button to login with Spotify.
-
- It is presented when `isAuthorized` is `false`.
-
- When the user taps the button, the authorization URL is opened in the browser,
- which prompts them to login with their Spotify account and authorize this
- application.
-
- After Spotify redirects back to this app and the access and refresh tokens have
- been retrieved, dismiss this view by setting `isAuthorized` to `true`.
- */
-struct LoginView: ViewModifier {
-
-    /// Always show this view for debugging purposes. Most importantly, this is
-    /// useful for the preview provider.
-    fileprivate static var debugAlwaysShowing = false
-    
-    /// The animation that should be used for presenting and dismissing this
-    /// view.
-    static let animation = Animation.spring()
-    
-    @Environment(\.colorScheme) var colorScheme
-
+struct LoginView: View {
     @EnvironmentObject var spotify: Spotify
-
-    /// After the app first launches, add a short delay before showing this view
-    /// so that the animation can be seen.
-    @State private var finishedViewLoadDelay = false
-    
-    let backgroundGradient = LinearGradient(
-        gradient: Gradient(
-            colors: [
-                Color(red: 0.467, green: 0.765, blue: 0.267),
-                Color(red: 0.190, green: 0.832, blue: 0.437)
-            ]
-        ),
-        startPoint: .leading, endPoint: .trailing
-    )
-    
-    var spotifyLogo: ImageName {
-        colorScheme == .dark ? .spotifyLogoWhite
-                : .spotifyLogoBlack
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .blur(
-                radius: spotify.isAuthorized && !Self.debugAlwaysShowing ? 0 : 3
-            )
-            .overlay(
-                ZStack {
-                    if !spotify.isAuthorized || Self.debugAlwaysShowing {
-                        Color.black.opacity(0.25)
-                            .edgesIgnoringSafeArea(.all)
-                        if self.finishedViewLoadDelay || Self.debugAlwaysShowing {
-                            loginView
-                        }
-                    }
-                }
-            )
-            .onAppear {
-                // After the app first launches, add a short delay before
-                // showing this view so that the animation can be seen.
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    withAnimation(LoginView.animation) {
-                        self.finishedViewLoadDelay = true
-                    }
-                }
-            }
-    }
-    
-    var loginView: some View {
-        spotifyButton
-            .padding()
-            .padding(.vertical, 50)
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(20)
-            .overlay(retrievingTokensView)
-            .shadow(radius: 5)
-            .transition(
-                AnyTransition.scale(scale: 1.2)
-                    .combined(with: .opacity)
-            )
-    }
-    
-    var spotifyButton: some View {
-
-        Button(action: spotify.authorize) {
-            HStack {
-                Image(spotifyLogo)
-                    .interpolation(.high)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 40)
-                Text("Log in with Spotify")
-                    .font(.title)
-            }
-            .padding()
-            .background(backgroundGradient)
-            .clipShape(Capsule())
-            .shadow(radius: 5)
-        }
-        .accessibility(identifier: "Log in with Spotify Identifier")
-        .buttonStyle(PlainButtonStyle())
-        // Prevent the user from trying to login again
-        // if a request to retrieve the access and refresh
-        // tokens is currently in progress.
-        .allowsHitTesting(!spotify.isRetrievingTokens)
-        .padding(.bottom, 5)
+    @State private var emailInput = ""
+    @State private var passwordInput = ""
+    @State private var wrongEmail = 0
+    @State private var wrongPassword = 0
+    @State private var showingLoginScreen = false
+    @available(iOS 15.0, *)
+    @State private var isAuthenticated = false
+    var body: some View {
         
-    }
-    
-    var retrievingTokensView: some View {
-        VStack {
-            Spacer()
-            if spotify.isRetrievingTokens {
-                HStack {
-                    ProgressView()
+        NavigationView {
+            ZStack {
+                Constants.spotifyBlack.ignoresSafeArea()
+                VStack {
+                    Constants().Logo()
+                    VStack {
+                        Text("Login").font(.custom(Constants.App.fontName, size: CGFloat(Constants.Layout.fontSizeHeading)))
+                            .bold()
+                            .foregroundColor(Constants.textColor)
+                            .padding()
+                        TextField("Enter Email", text: $emailInput, prompt: Text("Enter Email")
+                            .foregroundColor(.white)
+                            .font(.custom(Constants.App.fontName, size: CGFloat(Constants.Layout.fontSizeHeading))))
+                        .foregroundColor(.white).padding()
+                        .autocapitalization(.none)
+                            .frame(width: 300, height: 50)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(lineWidth: 2)
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                            )
+                            .border(.red, width: CGFloat(wrongEmail))
+                        TextField("Enter Password", text: $passwordInput, prompt: Text("Enter Password")
+                            .foregroundColor(.white)
+                            .font(.custom(Constants.App.fontName, size: CGFloat(Constants.Layout.fontSizeHeading))))
+                        .foregroundColor(.white).padding()
+                        .autocapitalization(.none)
+                            .frame(width: 300, height: 50)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(lineWidth: 2)
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                            )
+                            .padding()
+                        Button("Login") {
+                            // Authenticate user
+                            authenticateUser(email: emailInput, password: passwordInput)
+                            isAuthenticated = true
+                        }
+                        .foregroundColor(.white)
+                        .frame(width: 100, height: 50)
+                        .background(Color.green)
+                        .cornerRadius(10)
+
+                        //Navigation Link
+                        NavigationLink(destination: RecentlyPlayedView(),
+                                       isActive: $isAuthenticated,
+                                       label: {
+                            EmptyView()
+                        }
+                        
+                        )
+                        Text("Don't have an account?")
+                            .foregroundColor(.white)
+                            .padding()
+                        NavigationLink(destination: SignupView()) {
+                            Text("Sign up here!")
+                                .foregroundColor(.white)
+                        }
                         .padding()
-                    Text("Authenticating")
+                        
+                    }
                 }
-                .padding(.bottom, 20)
+                Spacer()
             }
+            
+            //Fields
+            
         }
     }
-    
+    //The print statement is catching the incorrect output, upon inspection
+    //email and emailInput are the same string,
+    // but it's somehow not stepping into the if condition when it's true
+    func authenticateUser(email: String, password: String) {
+        if email.lowercased() == "vietbui19@agustana.edu" {
+            print(emailInput, email)
+            wrongEmail = 0
+            if password.lowercased() == "test123!" {
+                wrongPassword = 0
+                showingLoginScreen = true
+            } else {
+                wrongPassword = 2
+            }
+        } else {
+            print(emailInput.lowercased(), email)
+            print(emailInput == email)
+            wrongEmail = 2
+        }
+    }
 }
 
-struct LoginView2: ViewModifier {
 
-    /// Always show this view for debugging purposes. Most importantly, this is
-    /// useful for the preview provider.
-    fileprivate static var debugAlwaysShowing = false
-    
-    /// The animation that should be used for presenting and dismissing this
-    /// view.
-    static let animation = Animation.spring()
-    
-    @Environment(\.colorScheme) var colorScheme
-
-    @EnvironmentObject var spotify: Spotify
-
-    /// After the app first launches, add a short delay before showing this view
-    /// so that the animation can be seen.
-    @State private var finishedViewLoadDelay = false
-    
-    let backgroundGradient = LinearGradient(
-        gradient: Gradient(
-            colors: [
-                Color(red: 0.467, green: 0.765, blue: 0.267),
-                Color(red: 0.190, green: 0.832, blue: 0.437)
-            ]
-        ),
-        startPoint: .leading, endPoint: .trailing
-    )
-    
-    var spotifyLogo: ImageName {
-        colorScheme == .dark ? .spotifyLogoWhite
-                : .spotifyLogoBlack
-    }
-    
-    func body(content: Content) -> some View {
-        content
-            .blur(
-                radius: spotify.isAuthorized && !Self.debugAlwaysShowing ? 0 : 3
-            )
-            .overlay(
-                ZStack {
-                    if !spotify.isAuthorized || Self.debugAlwaysShowing {
-                        Color.black.opacity(0.25)
-                            .edgesIgnoringSafeArea(.all)
-                        if self.finishedViewLoadDelay || Self.debugAlwaysShowing {
-                            loginView
-                        }
-                    }
-                }
-            )
-            .onAppear {
-                // After the app first launches, add a short delay before
-                // showing this view so that the animation can be seen.
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    withAnimation(LoginView.animation) {
-                        self.finishedViewLoadDelay = true
-                    }
-                }
-            }
-    }
-    
-    var loginView: some View {
-        spotifyButton
-            .padding()
-            .padding(.vertical, 50)
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(20)
-            .overlay(retrievingTokensView)
-            .shadow(radius: 5)
-            .transition(
-                AnyTransition.scale(scale: 1.2)
-                    .combined(with: .opacity)
-            )
-    }
-    
-    var spotifyButton: some View {
-
-        Button(action: spotify.authorize) {
-            HStack {
-                Image(spotifyLogo)
-                    .interpolation(.high)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 40)
-                Text("Log in with Spotify")
-                    .font(.title)
-            }
-            .padding()
-            .background(backgroundGradient)
-            .clipShape(Capsule())
-            .shadow(radius: 5)
-        }
-        .accessibility(identifier: "Log in with Spotify Identifier")
-        .buttonStyle(PlainButtonStyle())
-        // Prevent the user from trying to login again
-        // if a request to retrieve the access and refresh
-        // tokens is currently in progress.
-        .allowsHitTesting(!spotify.isRetrievingTokens)
-        .padding(.bottom, 5)
-        
-    }
-    
-    var retrievingTokensView: some View {
-        VStack {
-            Spacer()
-            if spotify.isRetrievingTokens {
-                HStack {
-                    ProgressView()
-                        .padding()
-                    Text("Authenticating")
-                }
-                .padding(.bottom, 20)
-            }
-        }
-    }
-    
-}
 
 struct LoginView_Previews: PreviewProvider {
-    
-    static let spotify = Spotify()
-    
     static var previews: some View {
-        RootView()
-            .environmentObject(spotify)
-            .onAppear(perform: onAppear)
+        LoginView()
     }
-    
-    static func onAppear() {
-        spotify.isAuthorized = false
-        spotify.isRetrievingTokens = true
-        LoginView.debugAlwaysShowing = true
-    }
-
 }

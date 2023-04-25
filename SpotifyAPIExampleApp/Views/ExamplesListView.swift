@@ -7,59 +7,60 @@ struct ExamplesListView: View {
         
         List {
             
-//            SplashScreenView().onAppear {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                    self.showLoginView = true
-//                    //                    self.showAuth = true
-//
-//                }
-//            }
-//
-//
-//            if $showLoginView.wrappedValue {
-////                withAnimation {
-////                    LoginView()
-////                    //                    Auth()
-////                }
-//                //                .transition(.scale)
-//                //                .animation(.easeInOut(duration: 0.5))
-//            }
+            //            SplashScreenView().onAppear {
+            //                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //                    self.showLoginView = true
+            //                    //                    self.showAuth = true
+            //
+            //                }
+            //            }
+            //
+            //
+            //            if $showLoginView.wrappedValue {
+            ////                withAnimation {
+            ////                    LoginView()
+            ////                    //                    Auth()
+            ////                }
+            //                //                .transition(.scale)
+            //                //                .animation(.easeInOut(duration: 0.5))
+            //            }
             
-            NavigationLink("SwipeView",
-                           destination: SwipeView()
-            )
-            NavigationLink("LoginSwipe",
-                           destination: LoginSwipe()
-            )
-            NavigationLink("SignUpView",
-                           destination: SignupView()
-            )
-            NavigationLink("ForgotPasswordView",
-                           destination: SignupView())
-            
-            NavigationLink(
-                "Playlists", destination: PlaylistsListView()
-            )
-            NavigationLink(
-                "Saved Albums", destination: SavedAlbumsGridView()
-            )
-            NavigationLink(
-                "Search For Tracks", destination: SearchForTracksView()
-            )
-            NavigationLink(
-                "Recently Played Tracks", destination: RecentlyPlayedView()
-            )
-//            NavigationLink(
-//                "Debug Menu", destination: DebugMenuView()
-//            )
-            
-            // This is the location where you can add your own views to test out
-            // your application. Each view receives an instance of `Spotify`
-            // from the environment.
+            //            NavigationLink("SwipeView",
+            //                           destination: SwipeView()
+            //            )
+            //            NavigationLink("LoginSwipe",
+            //                           destination: LoginSwipe()
+            //            )
+            //            NavigationLink("SignUpView",
+            //                           destination: SignupView()
+            //            )
+            //            NavigationLink("ForgotPasswordView",
+            //                           destination: SignupView())
+            //
+            //            NavigationLink(
+            //                "Playlists", destination: PlaylistsListView()
+            //            )
+            //            NavigationLink(
+            //                "Saved Albums", destination: SavedAlbumsGridView()
+            //            )
+            //            NavigationLink(
+            //                "Search For Tracks", destination: SearchForTracksView()
+            //            )
+            //            NavigationLink(
+            //                "Recently Played Tracks", destination: RecentlyPlayedView()
+            //            )
+            ////            NavigationLink(
+            ////                "Debug Menu", destination: DebugMenuView()
+            ////            )
+            //
+            //            // This is the location where you can add your own views to test out
+            //            // your application. Each view receives an instance of `Spotify`
+            //            // from the environment.
+            //
+            //        }
+            //        .listStyle(PlainListStyle())
             
         }
-        .listStyle(PlainListStyle())
-        
     }
 }
 

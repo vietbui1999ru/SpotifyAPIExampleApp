@@ -9,27 +9,45 @@ struct RootView: View {
     @State private var alert: AlertItem? = nil
 
     @State private var cancellables: Set<AnyCancellable> = []
+
+    @State private var showLoginView = false
     
     var body: some View {
-        NavigationView {
-            ExamplesListView()
-                .navigationBarTitle("Spotify Example App")
-                .navigationBarItems(trailing: logoutButton)
-                .disabled(!spotify.isAuthorized)
-        }
-        // The login view is presented if `Spotify.isAuthorized` == `false. When
-        // the login button is tapped, `Spotify.authorize()` is called. After
-        // the login process successfully completes, `Spotify.isAuthorized` will
-        // be set to `true` and `LoginView` will be dismissed, allowing the user
-        // to interact with the rest of the app.
-        .modifier(LoginView())
-        // Presented if an error occurs during the process of authorizing with
-        // the user's Spotify account.
-        .alert(item: $alert) { alert in
-            Alert(title: alert.title, message: alert.message)
-        }
-        // Called when a redirect is received from Spotify.
-        .onOpenURL(perform: handleURL(_:))
+//        NavigationView {
+//            ExamplesListView()
+//                .navigationBarTitle("Spotify Example App")
+//                .navigationBarItems(trailing: logoutButton)
+//                .disabled(!spotify.isAuthorized)
+//        }
+////        // The login view is presented if `Spotify.isAuthorized` == `false. When
+////        // the login button is tapped, `Spotify.authorize()` is called. After
+////        // the login process successfully completes, `Spotify.isAuthorized` will
+////        // be set to `true` and `LoginView` will be dismissed, allowing the user
+////        // to interact with the rest of the app.
+//        .modifier(LoginView())
+//        // Presented if an error occurs during the process of authorizing with
+//        // the user's Spotify account.
+//        .alert(item: $alert) { alert in
+//            Alert(title: alert.title, message: alert.message)
+//        }
+//        // Called when a redirect is received from Spotify.
+//        .onOpenURL(perform: handleURL(_:))
+        
+        ZStack {
+            SplashScreenView().onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.showLoginView = true
+                    
+                }
+
+            }
+
+            if $showLoginView.wrappedValue {
+                LoginView()
+            }
+        }.animation(.easeInOut(duration: 0.5))
+        .transition(.scale)
+        .ignoresSafeArea(.all)
         
     }
     

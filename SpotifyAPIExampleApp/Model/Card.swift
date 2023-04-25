@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SpotifyWebAPI
+import Combine
 
 struct Card: View {
     let imageId: String
   //  @Binding private var conditionValue: Bool
     @State private var offset = CGSize.zero
+    @EnvironmentObject var spotify: Spotify
     
+    let track : Track
 
     var body: some View {
         let dragGesture = DragGesture()
@@ -50,4 +54,22 @@ struct Card: View {
         .offset(offset)
         .gesture(dragGesture)
     }
+    func trackDisplayImage() -> String {
+        let displayImage = track.album?.images?.first?.url.absoluteString ?? ""
+        return displayImage
+    }
+    func trackDisplayName() -> String {
+        var displayName = track.name
+        if let artistName = track.artists?.first?.name {
+            displayName += " - \(artistName)"
+        }
+        return displayName
+    }
 }
+
+
+//struct Card_Preview: PreviewProvider {
+//    /// Preview for a Card
+//
+//}
+
